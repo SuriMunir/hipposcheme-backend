@@ -16,6 +16,10 @@ mongoose
 
 app.use('/api/members', memberRoute);
 
+app.get('/', (req, res) => {
+  res.send('Welcome to hipposcheme backend.');
+});
+
 app.listen(PORT, () => {
   console.log(`Server is listening on port: ${PORT}`);
 });
