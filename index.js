@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const PORT = 6000;
+const port = process.env.PORT || 5000;
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const memberRoute = require('./routes/member');
@@ -14,12 +14,12 @@ mongoose
   .then(console.log('Connected to Mongo DB'))
   .catch((err) => console.log(err));
 
-app.use('/api/members', memberRoute);
-
 app.get('/', (req, res) => {
   res.send('Welcome to hipposcheme backend.');
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is listening on port: ${PORT}`);
+app.use('/api/members', memberRoute);
+
+app.listen(port, () => {
+  console.log(`Server is listening on port: ${port}`);
 });
