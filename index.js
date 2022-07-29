@@ -4,10 +4,12 @@ const port = process.env.PORT || 5000;
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const memberRoute = require('./routes/member');
+let cors = require('cors');
 
 dotenv.config();
 
 app.use(express.json());
+app.use(cors());
 
 mongoose
   .connect(process.env.MONGO_URL)
